@@ -1,8 +1,8 @@
-# Your Name Here
+# Adam Lindberg
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
+# 11/19/24
+# Lab 10
+# Lab Section: 10
 # Sources, people worked with, help given to: 
 # your
 # comments
@@ -30,6 +30,7 @@ def get_hash(to_hash):
 #   - You can use the provided `get_hash()` function to generate the hashes.
 #   - Be careful, as "hello" and "hello " would generate a different hash.
 
+
 # You will need to include a try-except-catch block in your code.
 # - The reading of files needs to occur in the try blocks.
 
@@ -43,3 +44,19 @@ def get_hash(to_hash):
 # Hash each individual password and compare it against the stored hash.
 # - When you find the match, print the plaintext version of the password.
 # - End your loop.
+try:
+    hash = Path("hash")
+    hash1 = hash.read_text()
+except FileNotFoundError:
+    print("File not found.")
+try:
+    path1 = Path("rockyou.txt")
+    contents = path1.read_text()
+except FileNotFoundError:
+    print("File not found.")
+else:
+    lines = contents.splitlines()
+    for line in lines:
+        line_hash = get_hash(line)
+        if line_hash == hash1:
+            print(f"The plain text password is: {line}")
